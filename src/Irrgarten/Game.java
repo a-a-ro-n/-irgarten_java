@@ -9,6 +9,8 @@ import static java.util.Arrays.asList;
  */
 public class Game {
     private final static int MAX_ROUNDS = 10;
+    private final static int N_ROWS = 10;
+    private final static int N_COLS = 10;
     private int currentPlayerIndex;
     private String log;
     
@@ -27,10 +29,13 @@ public class Game {
     public Game(int nplayers){
         for(int i = 0; i < nplayers; i++){
             Player player = new Player((char)i,Dice.randomIntelligence(),Dice.randomStrength()); 
-            
             players.add(player);
         }
-        
+                    
+        int exitRow = Dice.randomPos(N_ROWS);
+        int exitCol = Dice.randomPos(N_COLS);
+        lab = new Labyrinth(N_ROWS,N_COLS,exitRow,exitCol);
+            
         currentPlayerIndex = Dice.whoStarts(nplayers); 
         lab.spreadPlayers(players.toArray(new Player[0])); 
         log = "--- Start_Game ---";  
