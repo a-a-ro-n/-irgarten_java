@@ -35,7 +35,7 @@ public class Game {
         int exitRow = Dice.randomPos(N_ROWS);
         int exitCol = Dice.randomPos(N_COLS);
         lab = new Labyrinth(N_ROWS,N_COLS,exitRow,exitCol);
-            
+        configureLabyrinth();
         currentPlayerIndex = Dice.whoStarts(nplayers); 
         lab.spreadPlayers(players.toArray(new Player[0])); 
         log = "--- Start_Game ---";  
