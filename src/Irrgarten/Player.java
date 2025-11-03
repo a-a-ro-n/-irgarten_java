@@ -176,23 +176,7 @@ public class Player {
     }
     
     public boolean defend(float receivedAttack){
-        manageHit(receivedAttack);
-        float defense = defensiveEnergy();
-        boolean lose = false;
-        
-        if(defense < receivedAttack){
-            gotWounded();
-            incConsecutiveHits();
-        }
-        else
-            resetHits();
-        
-        if((consecutiveHits == HITS2LOSE) || dead()){
-            resetHits();
-            lose = true;
-        }
-        
-        return lose;
+        return manageHit(receivedAttack);
     }
     
     public Directions move(Directions direction,ArrayList<Directions> validMoves){
