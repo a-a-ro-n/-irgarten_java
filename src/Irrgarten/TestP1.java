@@ -7,7 +7,7 @@ package Irrgarten;
  */
 
 public class TestP1 {
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         
         System.out.println("--------------------------------------------------");
         System.out.println("      INICIO DE PRUEBAS PARA LA PRÁCTICA 1        ");
@@ -137,5 +137,5 @@ public class TestP1 {
         System.out.println("\n\n--------------------------------------------------");
         System.out.println("                 FIN DE PRUEBAS                   ");
         System.out.println("--------------------------------------------------");
-    }
+    }*/
 }
