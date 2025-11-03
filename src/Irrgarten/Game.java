@@ -1,0 +1,198 @@
+package Irrgarten;
+
+import java.util.ArrayList;
+import static java.util.Arrays.asList;
+
+/**
+ *
+ * @author aaron
+ */
+public class Game {
+    private final static int MAX_ROUNDS = 10;
+    private int currentPlayerIndex;
+    private String log;
+    
+    private ArrayList<Player> players = new ArrayList<>();
+    private int num_players = 0;
+    private ArrayList<Monster> monsters = new ArrayList<>();
+    private int num_monsters = 0;
+    Labyrinth lab;
+    
+    public int getPlayers(){
+        return num_players;
+    }
+    
+    public int getMonsters(){
+        return num_monsters;
+    }
+   
+    public Game(int nplayers){
+        for(int i = 0; i < nplayers; i++){
+            Player player = new Player((char)i,Dice.randomIntelligence(),Dice.randomStrength()); 
+            
+            players.add(player);
+            ++num_players; 
+        }
+        
+        currentPlayerIndex = Dice.whoStarts(nplayers); 
+        lab.spreadPlayers(players.toArray(new Player[0])); 
+        log = "--- Start_Game ---";  
+    }
+    
+    public boolean finished(){
+        return lab.haveAWinner();
+    }
+    
+    
+    public GameState getGameState(){
+        return new GameState(lab.toString(),players.toString(),monsters.toString(),num_players,finished(),log);
+    }
+    
+    private void configureLabyrinth(){
+        for(int i = 0; i < 3; i++){
+            Monster monster = new Monster("Monster# " + i, Dice.randomIntelligence(), Dice.randomStrength()); 
+            int[] pos = lab.randomEmptyPos();
+            
+            lab.addMonster(pos[0], pos[1], monster);
+            
+            monster.setPos(pos[0], pos[1]);
+            monsters.add(monster);
+            ++num_monsters;
+            log += "Labyrinth configured: " + num_monsters + " monsters added.\n";
+        }
+
+        log += "Labyrinth configured: " + num_monsters + " monsters added.\n";
+    }
+    
+    private void nextPlayer(){
+        currentPlayerIndex = (currentPlayerIndex + 1) % num_players;
+    }
+    
+    
+    
+    private void manageReward(GameCharacter winner){
+        if(winner == GameCharacter.PLAYER){
+            players.get(currentPlayerIndex).receiveReward();
+            logPlayerWon();
+        }
+        else
+            logMonsterWon();
+    }
+    
+    private void manageResurrection(){
+        boolean resurrect = Dice.resurrectPlayer();
+        if(resurrect){
+            players.get(currentPlayerIndex).resurrect();
+            logResurrected();
+        }
+        else
+            logPlayerSkipTurn();
+    }
+    
+    private void logPlayerWon(){
+        log += "Player# " + players.get(currentPlayerIndex).getNumber() + " Won the combat!!!\n";
+    }
+    
+    private void logMonsterWon(){
+        log += "Monster Won the combat!!!\n";
+    }
+    
+    private void logResurrected(){
+        log += "Resurect: Player# " + players.get(currentPlayerIndex).getNumber() + "\n";
+    }
+    
+    private void logPlayerSkipTurn(){
+        log += "Skip Turn: Player# " + players.get(currentPlayerIndex).getNumber() + "\n";
+    }
+    
+    private void logPlayerNoOrders(){
+        log += "Player# " + players.get(currentPlayerIndex).getNumber() + " un spected order\n";
+    }
+    
+    private void logNoMonster(){
+        log += "Player# " + players.get(currentPlayerIndex).getNumber() + " moves to a empty celd or can't move\n";
+    }
+    
+    private void logRounds(int rounds, int max){
+        log += "Done " + rounds +" of " + max + "\n";
+    }
+    
+    
+    private Directions actualDirection(Directions preferredDirection){
+        Player currentPlayer = players.get(currentPlayerIndex);
+        int currentRow = currentPlayer.getRow();
+        int currentCol = currentPlayer.getCol();
+        
+        Directions[] valid = validMoves(currentRow, currentCol);
+        ArrayList<Directions> direcion = new ArrayList<>(asList(valid));
+        
+        return currentPlayer.move(preferredDirection,direcion);  
+    }
+    
+    private Directions[] validMoves(int row, int col){
+        return lab.validMoves(row, col);
+    }
+    
+    private GameCharacter combat(Monster monster){
+        Player currentPlayer = players.get(currentPlayerIndex);
+        int rounds = 0;
+        GameCharacter winner = GameCharacter.PLAYER;
+        float playerAttack = currentPlayer.attack();
+        boolean lose = monster.defend(playerAttack);
+        
+        while(!lose && (rounds < MAX_ROUNDS)){
+            winner = GameCharacter.MONSTER;
+            rounds++;
+            float monsterAttack = monster.attack();
+            lose = currentPlayer.defend(monsterAttack);
+            
+            if(!lose){
+                playerAttack = currentPlayer.attack();
+                winner = GameCharacter.PLAYER;
+                lose = monster.defend(playerAttack);
+            }
+        }
+        
+        logRounds(rounds,MAX_ROUNDS);
+        
+        return winner;
+    }
+    
+    public boolean nextStep(Directions preferredDirection){ // no me deja usarlo sino en el controler
+        log = "";
+        boolean dead = players.get(currentPlayerIndex).dead();
+        GameCharacter winner;
+        
+        if(!dead){
+            Directions direction = actualDirection(preferredDirection);
+            if(direction != preferredDirection)
+                logPlayerNoOrders();
+            
+            Monster monster = lab.putPlayer(direction,players.get(currentPlayerIndex));
+            
+            if(monster == null)
+                logNoMonster();
+            else{
+                winner = combat(monster);
+                manageReward(winner);
+            }
+        }
+        else
+            manageResurrection();
+        
+        boolean endGame = finished();
+        
+        if(!endGame)
+            nextPlayer();
+        
+        return endGame;
+    }
+    
+    private void addBlock(Orientation orientation, int startRow, int startCol, int length){
+        lab.addBlock(orientation,startRow,startCol,length);
+    } 
+    
+    private Monster putPlayer(Directions direction, Player player){
+        return lab.putPlayer(direction, players.get(currentPlayerIndex));
+    }
+}
