@@ -21,11 +21,11 @@ public class Dice {
     private static final Random generator = new Random();
     
     public static int randomPos(int max){
-        return generator.nextInt(max + 1); // el + 1 es para que max este incluido en el rango de Random
+        return generator.nextInt(max); // el + 1 es para que max este incluido en el rango de Random
     }
     
     public static int whoStarts(int nplayer){
-        return generator.nextInt(nplayer + 1);
+        return generator.nextInt(nplayer);
     }    
     
     public static float randomIntelligence(){
@@ -37,7 +37,7 @@ public class Dice {
     }
     
     public static boolean resurrectPlayer(){
-        return generator.nextFloat(10) < RESURRECT_PROB * 10; // true si generator es < 30%
+        return generator.nextFloat() < RESURRECT_PROB; // true si generator es < 30%
     }
     
     public static int weaponsReward(){
