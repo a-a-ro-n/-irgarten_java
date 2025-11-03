@@ -58,7 +58,7 @@ public class Labyrinth {
                 
                 Player player = player_pos[i][j];
                 
-                if(player.getRow() == exitRow && player.getCol() == exitCol)
+                if(player != null && player.getRow() == exitRow && player.getCol() == exitCol)
                     winner = true;
             }
         }
