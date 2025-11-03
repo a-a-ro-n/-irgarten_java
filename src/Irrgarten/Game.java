@@ -13,17 +13,15 @@ public class Game {
     private String log;
     
     private ArrayList<Player> players = new ArrayList<>();
-    private int num_players = 0;
     private ArrayList<Monster> monsters = new ArrayList<>();
-    private int num_monsters = 0;
     Labyrinth lab;
     
     public int getPlayers(){
-        return num_players;
+        return players.size();
     }
     
     public int getMonsters(){
-        return num_monsters;
+        return monsters.size();
     }
    
     public Game(int nplayers){
@@ -31,7 +29,6 @@ public class Game {
             Player player = new Player((char)i,Dice.randomIntelligence(),Dice.randomStrength()); 
             
             players.add(player);
-            ++num_players; 
         }
         
         currentPlayerIndex = Dice.whoStarts(nplayers); 
@@ -45,7 +42,7 @@ public class Game {
     
     
     public GameState getGameState(){
-        return new GameState(lab.toString(),players.toString(),monsters.toString(),num_players,finished(),log);
+        return new GameState(lab.toString(),players.toString(),monsters.toString(),players.size(),finished(),log);
     }
     
     private void configureLabyrinth(){
@@ -57,15 +54,14 @@ public class Game {
             
             monster.setPos(pos[0], pos[1]);
             monsters.add(monster);
-            ++num_monsters;
-            log += "Labyrinth configured: " + num_monsters + " monsters added.\n";
+            log += "Labyrinth configured: " + monsters.size() + " monsters added.\n";
         }
 
-        log += "Labyrinth configured: " + num_monsters + " monsters added.\n";
+        log += "Labyrinth configured: " + monsters.size() + " monsters added.\n";
     }
     
     private void nextPlayer(){
-        currentPlayerIndex = (currentPlayerIndex + 1) % num_players;
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
     
     
