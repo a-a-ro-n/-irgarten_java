@@ -72,7 +72,7 @@ public class Labyrinth {
         
         for(int i = 0; i < nRows; ++i){
             for(int j = 0; j < nCols; ++j){
-                if(grid[i][j] == EMPTY_CHAR && player_pos[i][j] != null)
+                if(player_pos[i][j] != null)
                     result += " " + player_pos[i][j].getNumber();
                 else
                     result += " " + grid[i][j];
