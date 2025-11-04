@@ -71,8 +71,13 @@ public class Labyrinth {
         String result = "";
         
         for(int i = 0; i < nRows; ++i){
-            for(int j = 0; j < nCols; ++j)
-                result += " " + grid[i][j];
+            for(int j = 0; j < nCols; ++j){
+                if(grid[i][j] == EMPTY_CHAR && player_pos[i][j] != null)
+                    result += " " + player_pos[i][j].getNumber();
+                else
+                    result += " " + grid[i][j];
+            }
+            
             result += "\n";
         }
         
