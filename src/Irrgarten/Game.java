@@ -62,8 +62,8 @@ public class Game {
             log += "Labyrinth configured: " + monsters.size() + " monsters added.\n";
         }
 
-        lab.addBlock(Orientation.VERTICAL,1,3,5);
-        lab.addBlock(Orientation.HORIZONTAL,5,1,4);
+        addBlock(Orientation.VERTICAL,1,3,5);
+        addBlock(Orientation.HORIZONTAL,5,1,4);
         log += "Labyrinth configured: Blocks added\n"; 
         log += "Labyrinth configured: " + monsters.size() + " monsters added.\n";
     }
@@ -114,7 +114,7 @@ public class Game {
     }
     
     private void logNoMonster(){
-        log += "Player# " + players.get(currentPlayerIndex).getNumber() + " moves to a empty celd or can't move\n";
+        log += "Player# " + players.get(currentPlayerIndex).getNumber() + " can't move\n";
     }
     
     private void logRounds(int rounds, int max){
@@ -163,7 +163,6 @@ public class Game {
     }
     
     public boolean nextStep(Directions preferredDirection){ // no me deja usarlo sino en el controler
-        log = "";
         boolean dead = players.get(currentPlayerIndex).dead();
         GameCharacter winner;
         
