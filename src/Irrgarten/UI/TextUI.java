@@ -1,4 +1,3 @@
-
 package Irrgarten.UI;
 
 import Irrgarten.Directions;
@@ -51,15 +50,14 @@ public class TextUI {
     }
     
     public void showGame(GameState gameState) {
-        System.out.println("\n--- ESTADO ACTUAL DEL JUEGO ---");
-        System.out.println(gameState.getLabyrinth());
-        System.out.println("Jugadores: " + gameState.getPlayers());
-        System.out.println("Monstruos: " + gameState.getMonstres());
-        System.out.println("Turno de Jugador: " + gameState.getCurrentPlayer());
-        System.out.println("Mensaje de Log: " + gameState.getLog());
-        if (gameState.getWinner()) {
-            System.out.println("¡UN JUGADOR HA GANADO!");
+        if(!gameState.getWinner()){
+            System.out.println("\n--- ESTADO ACTUAL DEL JUEGO ---");
+            System.out.println(gameState.getLabyrinth());
+            System.out.println("Jugadores: " + gameState.getPlayers());
+            System.out.println("Monstruos: " + gameState.getMonstres());
         }
+        else
+            System.out.println("¡UN JUGADOR HA GANADO!");
     }
     
 }
