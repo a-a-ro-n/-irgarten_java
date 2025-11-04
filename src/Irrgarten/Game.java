@@ -28,7 +28,7 @@ public class Game {
    
     public Game(int nplayers){
         for(int i = 0; i < nplayers; i++){
-            Player player = new Player((char)i,Dice.randomIntelligence(),Dice.randomStrength()); 
+            Player player = new Player((char)('0' + i),Dice.randomIntelligence(),Dice.randomStrength()); 
             players.add(player);
         }
                     
@@ -62,6 +62,9 @@ public class Game {
             log += "Labyrinth configured: " + monsters.size() + " monsters added.\n";
         }
 
+        lab.addBlock(Orientation.VERTICAL,1,3,5);
+        lab.addBlock(Orientation.HORIZONTAL,5,1,4);
+        log += "Labyrinth configured: Blocks added\n"; 
         log += "Labyrinth configured: " + monsters.size() + " monsters added.\n";
     }
     
