@@ -12,20 +12,14 @@ public class GAME {
     public static void main(String[] args) {
         
         System.out.println("\n--- JUEGO IRRGARTEN ---\n");
-        
-        // Número de jugadores
+
         int nPlayers = 2; 
 
-        // 1. Crear el Modelo (Juego)
         Game game = new Game(nPlayers);
-        
-        // 2. Crear la Vista (Interfaz de Texto)
+
         TextUI view = new TextUI();
-        
-        // 3. Crear el Controlador
+
         Controller controller = new Controller(game, view);
-        
-        // 4. Iniciar el juego
         controller.play();
         
         // Fin del juego
