@@ -11,7 +11,7 @@ public class Player {
     private final static int INITIAL_HEALTH = 10;
     private final static int HITS2LOSE = 3;
     
-    private String name = "Player# ";
+    private String name;
     private final char number;
     private final float intelligence;
     private final float strength;
@@ -27,7 +27,7 @@ public class Player {
         number =  _number;
         intelligence = _intelligence;
         strength = _strengh;
-        name += number; // establezco el nombre a Player# number
+        name = "Player# " + number; // establezco el nombre a Player# number
     }
     
     public void resurrect(){
