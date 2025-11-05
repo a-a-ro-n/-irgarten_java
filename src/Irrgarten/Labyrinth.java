@@ -168,13 +168,12 @@ public class Labyrinth {
 
     private void updateOldPos(int row, int col) { 
         if(posOK(row,col)){
-            if(combatPos(row,col)){
+            if(monster_pos[row][col] != null)
                 grid[row][col] = MONSTER_CHAR;
-            }
-            else{
+            else
                 grid[row][col] = EMPTY_CHAR;
-                player_pos[row][col] = null;
-            }
+            
+            player_pos[row][col] = null;
         }
     }
 
@@ -233,9 +232,9 @@ public class Labyrinth {
             else{
                 char number = player.getNumber();
                 set(row,col,number); 
+                set(row,col,player);
             }
-            
-            set(row,col,player); 
+
             player.setPos(row,col);
         }
         
