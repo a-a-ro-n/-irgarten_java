@@ -11,7 +11,7 @@ public class Player {
     private final static int INITIAL_HEALTH = 10;
     private final static int HITS2LOSE = 3;
     
-    private String name;
+    private final String name;
     private final char number;
     private final float intelligence;
     private final float strength;
@@ -29,6 +29,8 @@ public class Player {
         strength = _strengh;
         health = INITIAL_HEALTH;
         name = "Player# " + number; // establezco el nombre a Player# number
+        weapons.add(newWeapon()); // añado un arma al player
+        shields.add(newShield()); // añado un shield al player
     }
     
     public void resurrect(){
@@ -68,13 +70,16 @@ public class Player {
     }
     
     private void receiveWeapon(Weapon w){
-        for(int i = weapons.size() - 1; i >= 0; i--){
-            Weapon wi = weapons.get(i);
-            boolean discard = wi.discard();
-            
-            if(discard)
-                weapons.remove(i);
+        if(weapons.size() > 1){ // filtro para no quedarme con 0 weapons
+            for(int i = weapons.size() - 1; i >= 0; i--){
+                Weapon wi = weapons.get(i);
+                boolean discard = wi.discard();
+
+                if(discard)
+                    weapons.remove(i);
+            }
         }
+
         
         int size = weapons.size();
         
@@ -83,13 +88,16 @@ public class Player {
     }
     
     private void receiveShield(Shield s){
-        for(int i = shields.size() - 1; i >= 0; i--){
-             Shield si = shields.get(i);
-             boolean discard = si.discard();
-             
-             if(discard)
-                 shields.remove(i); 
+        if(shields.size() > 1){ // filtro para no quedarme con 0 shields
+            for(int i = shields.size() - 1; i >= 0; i--){
+                Shield si = shields.get(i);
+                boolean discard = si.discard();
+
+                if(discard)
+                    shields.remove(i); 
+            }
         }
+
         
         int size = shields.size();
         
