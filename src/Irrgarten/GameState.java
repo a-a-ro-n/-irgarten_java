@@ -20,8 +20,7 @@ public class GameState {
         winner = _winner;
         log = _log;
     }
-    
-    // -- Getters --
+
     public String getLabyrinth(){
         return labyrinth;
     }
@@ -44,30 +43,5 @@ public class GameState {
     
     public String getLog(){
         return log;
-    }
-    
-    // -- Setters --
-    public void setLabyrinth(String _labyrinth){
-        labyrinth = _labyrinth;
-    }
-    
-    public void setPlayers(String _players){
-        players = _players;
-    }
-    
-    public void setMonstres(String _monstres){
-        monstres = _monstres;
-    }
-    
-    public void setCurrentPlayer(int _currentPlayer){
-        currentPlayer = _currentPlayer;
-    }
-    
-    public void setWinner(boolean _winner){
-        winner = _winner;
-    }
-    
-    public void setLog(String _log){
-        log = _log;
     }
 }
