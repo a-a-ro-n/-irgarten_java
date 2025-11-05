@@ -64,7 +64,7 @@ public class Player {
     @Override
     public String toString(){
         return "\n\nName: " + name + "\nposicion: (" + row +"," + col + ")\nIntelligence: " + intelligence +
-                "\nStrengh: " + strength +"\nHealth: " + health + "\n";
+                "\nStrengh: " + strength +"\nHealth: " + health + "\nWeapons(damage): " + sumWeapons() + "\nShields(defend): " + sumShields() + "\n";
     }
     
     private void receiveWeapon(Weapon w){
