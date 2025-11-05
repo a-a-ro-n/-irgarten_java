@@ -114,7 +114,7 @@ public class Game {
     }
     
     private void logNoMonster(){
-        log += "Player# " + players.get(currentPlayerIndex).getNumber() + " can't move\n";
+        log += "Player# " + players.get(currentPlayerIndex).getNumber() + " move\n";
     }
     
     private void logRounds(int rounds, int max){
