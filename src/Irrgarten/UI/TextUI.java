@@ -53,8 +53,10 @@ public class TextUI {
         if(!gameState.getWinner()){
             System.out.println("\n--- ESTADO ACTUAL DEL JUEGO ---\n");
             System.out.println(gameState.getLabyrinth());
-            System.out.println("Jugadores: " + gameState.getPlayers() +"\n");
-            System.out.println("Monstruos: " + gameState.getMonstres() + "\n");
+            System.out.println("Jugadores -> " + gameState.getPlayers() +"\n");
+            System.out.println("Monstruos -> " + gameState.getMonstres() + "\n");
+            System.out.println("Turno de -> " + gameState.getCurrentPlayer() + "\n");
+            
         }
         else
             System.out.println("¡UN JUGADOR HA GANADO!");
