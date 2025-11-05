@@ -220,10 +220,8 @@ public class Labyrinth {
             if(posOK(oldRow,oldCol)){
                 p = player_pos[oldRow][oldCol];
                 
-                if(p == player){
+                if(p == player)
                     updateOldPos(oldRow,oldCol);
-                    set(row,col,EMPTY_CHAR);
-                }
             }
             
             boolean mosterPos = monsterPos(row,col);
