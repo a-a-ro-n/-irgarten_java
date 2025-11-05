@@ -36,7 +36,7 @@ public class Monster {
     
     @Override
     public String toString(){
-        return "Nombre: " + name + "\nPosicion: (" + row + "," + col + ")\nIntelligence: " + intelligence + 
+        return "\n\nNombre: " + name + "\nPosicion: (" + row + "," + col + ")\nIntelligence: " + intelligence + 
                 "\nStrength: " + strength + "\nHealth: " + health;
     }
     
