@@ -27,6 +27,7 @@ public class Player {
         number =  _number;
         intelligence = _intelligence;
         strength = _strengh;
+        health = INITIAL_HEALTH;
         name = "Player# " + number; // establezco el nombre a Player# number
     }
     
