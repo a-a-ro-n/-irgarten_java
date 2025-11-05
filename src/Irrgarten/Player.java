@@ -65,8 +65,21 @@ public class Player {
 
     @Override
     public String toString(){
-        return "\n\nName: " + name + "\nposicion: (" + row +"," + col + ")\nIntelligence: " + intelligence +
-                "\nStrengh: " + strength +"\nHealth: " + health + "\nWeapons(damage): " + sumWeapons() + "\nShields(defend): " + sumShields() + "\n";
+        String result = "\n\nName: " + name + "\nposicion: (" + row +"," + col + 
+                ")\nIntelligence: " + intelligence +
+                "\nStrengh: " + strength +"\nHealth: " + health + 
+                "\nWeapons(damage): " + sumWeapons() + "\nShields(defend): " + sumShields() + "\n";
+        
+                result += "\nWeapons: \n";
+                for(Weapon w : weapons)
+                    result += w.toString();
+                
+                result += "\n\nShields: ";
+                for(Shield s : shields)
+                    result += s.toString();
+                result += "\n\n";
+            
+        return result;
     }
     
     private void receiveWeapon(Weapon w){
