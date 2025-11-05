@@ -171,8 +171,10 @@ public class Labyrinth {
             if(combatPos(row,col)){
                 grid[row][col] = MONSTER_CHAR;
             }
-            else
+            else{
                 grid[row][col] = EMPTY_CHAR;
+                player_pos[row][col] = null;
+            }
         }
     }
 
@@ -237,9 +239,6 @@ public class Labyrinth {
             
             set(row,col,player); 
             player.setPos(row,col);
-            
-            if(mosterPos)
-                monster_pos[row][col] = null;
         }
         
         return monster;
