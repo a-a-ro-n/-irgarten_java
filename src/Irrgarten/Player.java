@@ -62,7 +62,7 @@ public class Player {
 
     @Override
     public String toString(){
-        return "\nName: " + name + "\nposicion: (" + row +"," + col + ")\nIntelligence: " + intelligence +
+        return "\n\nName: " + name + "\nposicion: (" + row +"," + col + ")\nIntelligence: " + intelligence +
                 "\nStrengh: " + strength +"\nHealth: " + health;
     }
     
