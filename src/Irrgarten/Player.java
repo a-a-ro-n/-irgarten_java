@@ -68,11 +68,12 @@ public class Player {
     }
     
     private void receiveWeapon(Weapon w){
-        for(Weapon wi : weapons){
+        for(int i = weapons.size() - 1; i >= 0; i--){
+            Weapon wi = weapons.get(i);
             boolean discard = wi.discard();
             
             if(discard)
-                weapons.remove(wi);
+                weapons.remove(i);
         }
         
         int size = weapons.size();
@@ -82,11 +83,12 @@ public class Player {
     }
     
     private void receiveShield(Shield s){
-        for(Shield si : shields){
+        for(int i = shields.size() - 1; i >= 0; i--){
+             Shield si = shields.get(i);
              boolean discard = si.discard();
              
              if(discard)
-                 shields.remove(si);
+                 shields.remove(i); 
         }
         
         int size = shields.size();
