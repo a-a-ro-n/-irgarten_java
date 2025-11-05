@@ -37,7 +37,7 @@ public class Monster {
     @Override
     public String toString(){
         return "\n\nNombre: " + name + "\nPosicion: (" + row + "," + col + ")\nIntelligence: " + intelligence + 
-                "\nStrength: " + strength + "\nHealth: " + health;
+                "\nStrength: " + strength + "\nHealth: " + health + "\n";
     }
     
     public void gotWounded(){
