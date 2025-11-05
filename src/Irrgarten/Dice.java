@@ -53,11 +53,11 @@ public class Dice {
     }
     
     public static float weaponPower(){
-        return generator.nextFloat(MAX_ATTACK + 1); // para que MAX_ATTACK este incluido
+        return generator.nextFloat(MAX_ATTACK);
     }
     
     public static float shieldPower(){
-        return generator.nextFloat(MAX_SHIELD + 1); // para que MAX_SHIELD este incluido
+        return generator.nextFloat(MAX_SHIELD);
     }
     
     public static int usesLeft(){
