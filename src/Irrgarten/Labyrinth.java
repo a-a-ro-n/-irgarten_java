@@ -36,8 +36,11 @@ public class Labyrinth {
         
         // Inicializacion del laberinto
         for(int i = 0; i < nRows; ++i){
-            for(int j = 0; j < nCols; ++j)
+            for(int j = 0; j < nCols; ++j){
                 grid[i][j] = EMPTY_CHAR;
+                player_pos[i][j] = null;
+                monster_pos[i][j] = null;
+            }
         }
         grid[exitRow][exitCol] = EXIT_CHAR;
     }
@@ -168,7 +171,9 @@ public class Labyrinth {
 
     private void updateOldPos(int row, int col) { 
         if(posOK(row,col)){
-            if(monster_pos[row][col] != null)
+            if(combatPos(row,col))
+                grid[row][col] = MONSTER_CHAR;
+            else if(monsterPos(row,col))
                 grid[row][col] = MONSTER_CHAR;
             else
                 grid[row][col] = EMPTY_CHAR;
