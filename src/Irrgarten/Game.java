@@ -38,7 +38,7 @@ public class Game {
         configureLabyrinth();
         currentPlayerIndex = Dice.whoStarts(nplayers); 
         lab.spreadPlayers(players.toArray(new Player[0])); 
-        log = "--- Start_Game ---";  
+        log = "--- Start_Game ---\n";  
     }
     
     public boolean finished(){
