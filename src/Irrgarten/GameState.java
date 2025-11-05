@@ -27,11 +27,11 @@ public class GameState {
     }
     
     public String getPlayers(){
-        return players;
+        return players.toString();
     }
     
     public String getMonstres(){
-        return monstres;
+        return monstres.toString();
     }
     
     public int getCurrentPlayer(){
