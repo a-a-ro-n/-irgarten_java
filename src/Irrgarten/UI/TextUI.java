@@ -56,6 +56,7 @@ public class TextUI {
             System.out.println("Jugadores -> " + gameState.getPlayers() +"\n");
             System.out.println("Monstruos -> " + gameState.getMonstres() + "\n");
             System.out.println("Turno de -> " + gameState.getCurrentPlayer() + "\n");
+            System.out.println("log: " + gameState.getLog() + "\n");
             
         }
         else
