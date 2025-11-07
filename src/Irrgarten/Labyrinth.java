@@ -173,8 +173,6 @@ public class Labyrinth {
         if(posOK(row,col)){
             if(combatPos(row,col))
                 grid[row][col] = MONSTER_CHAR;
-            else if(monsterPos(row,col))
-                grid[row][col] = MONSTER_CHAR;
             else
                 grid[row][col] = EMPTY_CHAR;
             
