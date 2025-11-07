@@ -74,7 +74,7 @@ public class Player {
                 for(Weapon w : weapons)
                     result += w.toString();
                 
-                result += "\n\nShields: ";
+                result += "\n\nShields: \n";
                 for(Shield s : shields)
                     result += s.toString();
                 result += "\n\n";
@@ -83,7 +83,7 @@ public class Player {
     }
     
     private void receiveWeapon(Weapon w){
-        if(weapons.size() > 1){ // filtro para no quedarme con 0 weapons
+        if(weapons.size() > 0){ 
             for(int i = weapons.size() - 1; i >= 0; i--){
                 Weapon wi = weapons.get(i);
                 boolean discard = wi.discard();
@@ -101,7 +101,7 @@ public class Player {
     }
     
     private void receiveShield(Shield s){
-        if(shields.size() > 1){ // filtro para no quedarme con 0 shields
+        if(shields.size() > 0){ 
             for(int i = shields.size() - 1; i >= 0; i--){
                 Shield si = shields.get(i);
                 boolean discard = si.discard();
