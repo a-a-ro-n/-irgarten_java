@@ -171,7 +171,7 @@ public class Game {
             if(direction != preferredDirection)
                 logPlayerNoOrders();
             
-            Monster monster = lab.putPlayer(direction,players.get(currentPlayerIndex));
+            Monster monster = putPlayer(direction,players.get(currentPlayerIndex));
             
             if(monster == null)
                 logNoMonster();
@@ -196,6 +196,6 @@ public class Game {
     } 
     
     private Monster putPlayer(Directions direction, Player player){
-        return lab.putPlayer(direction, players.get(currentPlayerIndex));
+        return lab.putPlayer(direction, player);
     }
 }
