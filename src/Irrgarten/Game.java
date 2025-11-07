@@ -11,6 +11,7 @@ public class Game {
     private final static int MAX_ROUNDS = 10;
     private final static int N_ROWS = 10;
     private final static int N_COLS = 10;
+    
     private int currentPlayerIndex;
     private String log;
     
@@ -59,7 +60,6 @@ public class Game {
             
             monster.setPos(pos[0], pos[1]);
             monsters.add(monster);
-            log += "Labyrinth configured: " + monsters.size() + " monsters added.\n";
         }
 
         addBlock(Orientation.VERTICAL,1,3,5);
