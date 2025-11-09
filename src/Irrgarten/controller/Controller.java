@@ -1,7 +1,7 @@
 package Irrgarten.controller;
 
-import Irrgarten.Game;
-import Irrgarten.Directions;
+import Irrgarten.irrgarten.Game;
+import Irrgarten.irrgarten.Directions;
 import Irrgarten.UI.TextUI;
 
 
