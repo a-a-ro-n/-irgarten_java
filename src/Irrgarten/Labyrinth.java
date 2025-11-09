@@ -76,7 +76,10 @@ public class Labyrinth {
         for(int i = 0; i < nRows; ++i){
             for(int j = 0; j < nCols; ++j){
                 if(player_pos[i][j] != null)
-                    result += " " + player_pos[i][j].getNumber();
+                    if(combatPos(i,j))
+                        result += " " + COMBAT_CHAR;
+                    else
+                        result += " " + player_pos[i][j].getNumber();
                 else
                     result += " " + grid[i][j];
             }
@@ -216,14 +219,10 @@ public class Labyrinth {
 
     private Monster putPlayer2D(int oldRow, int oldCol, int row, int col, Player player) { 
         Monster monster = null;
-        Player p;
         
         if(canStepOn(row,col)){
             if(posOK(oldRow,oldCol)){
-                p = player_pos[oldRow][oldCol];
-                
-                if(p == player)
-                    updateOldPos(oldRow,oldCol);
+                updateOldPos(oldRow,oldCol);
             }
             
             boolean mosterPos = monsterPos(row,col);
@@ -231,6 +230,7 @@ public class Labyrinth {
             if(mosterPos){
                 set(row,col,COMBAT_CHAR); 
                 monster = monster_pos[row][col];
+                set(row,col,player);
             }
             else{
                 char number = player.getNumber();
