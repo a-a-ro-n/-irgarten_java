@@ -66,9 +66,7 @@ public class Player {
     @Override
     public String toString(){
         String result = "\n\nName: " + name + "\nposicion: (" + row +"," + col + 
-                ")\nIntelligence: " + intelligence +
-                "\nStrengh: " + strength +"\nHealth: " + health + 
-                "\nWeapons(damage): " + sumWeapons() + "\nShields(defend): " + sumShields() + "\n";
+                ")\nIntelligence: " + intelligence;
         
                 result += "\nWeapons: \n";
                 for(Weapon w : weapons)
