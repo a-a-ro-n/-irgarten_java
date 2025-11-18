@@ -5,11 +5,12 @@ package Irrgarten.irrgarten;
  * @author aaron
  */
 
-public class Weapon {
+public class Weapon extends CombatElement{
     private final float power;
     private int uses;
     
     public Weapon(float _power,int _uses){
+        super(_power,_uses);
         power = _power;
         uses = _uses;
     }
@@ -34,7 +35,11 @@ public class Weapon {
     }
     
     @Override public String toString(){
-        return ("W[" + power + ", " + uses + "]");
+        String aux = super.toString();
+        String s ="W[ ";
+        s += aux;
+        s += "]";
+        return s;
     }
     
     public boolean discard(){
