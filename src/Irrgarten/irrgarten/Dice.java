@@ -1,5 +1,6 @@
 package Irrgarten.irrgarten;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -72,5 +73,13 @@ public class Dice {
         return (1 - (float)(usesLeft / MAX_USES))*10 > generator.nextFloat(10); 
         // al hacer (usesLeft / MAX_USES) se obtiene un valos entre 1-0 
         // entonces 1 - (usesLeft / MAX_USES) es lo inverso al (usesLeft / MAX_USES)
+    }
+    
+    public static Directions nexStep(Directions preference,ArrayList<Directions> validMoves, float intelligence){
+        float porcentage = generator.nextFloat((float) MAX_INTELLIGENCE);
+        Directions direccion = validMoves.get(generator.nextInt(validMoves.size()));
+        if(porcentage < intelligence)
+            direccion = preference;
+        return direccion;
     }
 }
