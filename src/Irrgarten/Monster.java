@@ -32,7 +32,7 @@ public class Monster extends LabyrinthCharacter{
     }
     
     public void gotWounded(){
-        // --health;
+        super.setHealth(super.getHealth() - 1);
     }
     
     
