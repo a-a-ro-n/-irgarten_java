@@ -9,26 +9,25 @@ import java.util.ArrayList;
 public class FuzzyPlayer extends Player{
     
     public FuzzyPlayer(Player other){
-        super(other, other.getNumber());
-        shields = other.shields;
-        weapons = other.weapons;
+        super(other);
     }
     
     @Override
     public Directions move(Directions direction, ArrayList<Directions> validMoves){
-        return direction;
+        return Dice.nextStep(direction, validMoves, super.getIntelligence());
     }
     
+   @Override 
     public float attack(){
-        
+        return (super.sumWeapons() + Dice.intensity(super.getStrength()));
     }
     
-    abstract float defensiveEnergy(){
-        
+    protected float defensiveEnergy(){
+        return (super.sumShields() + Dice.intensity(super.getIntelligence()));
     }
     
     @Override
     public String toString(){
-        return super.toString();
+        return ("Fuzzy " + super.toString());
     }
-}
+} 
