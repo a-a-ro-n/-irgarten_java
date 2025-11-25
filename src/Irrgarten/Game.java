@@ -1,13 +1,4 @@
 package Irrgarten;
-
-import Irrgarten.Dice;
-import Irrgarten.Directions;
-import Irrgarten.GameCharacter;
-import Irrgarten.GameState;
-import Irrgarten.Labyrinth;
-import Irrgarten.Monster;
-import Irrgarten.Orientation;
-import Irrgarten.Player;
 import java.util.ArrayList;
 import static java.util.Arrays.asList;
 
