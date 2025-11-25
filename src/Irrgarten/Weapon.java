@@ -1,6 +1,6 @@
 package Irrgarten;
 
-
+import Irrgarten.CombatElement;
 import Irrgarten.Dice;
 
 /**
@@ -8,39 +8,33 @@ import Irrgarten.Dice;
  * @author aaron
  */
 
-public class Weapon {
-    private final float power;
-    private int uses;
-    
+public class Weapon extends CombatElement{    
     public Weapon(float _power,int _uses){
-        power = _power;
-        uses = _uses;
+        super(_power,_uses);
     }
     
     public float getPower(){
-        return power;
+        return super.getEffect();
     }
     
+    @Override
     public int getUses(){
-        return uses;
+        return super.getUses();
     }
 
     public float attack(){
-        float damage = 0;
-        
-        if(uses > 0){
-            damage = power;
-            --uses;
-        }
-        
-        return damage;
+        return super.produceEffect();
     }
     
     @Override public String toString(){
-        return ("W[" + power + ", " + uses + "]");
+        String aux = super.toString();
+        String s ="W[ ";
+        s += aux;
+        s += "]";
+        return s;
     }
     
     public boolean discard(){
-        return Dice.discardElement(uses);
+        return Dice.discardElement(getUses());
     }
 }
