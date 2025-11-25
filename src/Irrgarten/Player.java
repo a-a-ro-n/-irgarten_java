@@ -33,6 +33,16 @@ public class Player {
         shields.add(newShield()); // añado un shield al player
     }
     
+    public Player(Player other){
+        number =  other.number;
+        intelligence = other.intelligence;
+        strength = other.strength;
+        health = other.health;
+        name = other.name; 
+        weapons = other.weapons;
+        shields = other.shields;
+    }
+    
     public void resurrect(){
         consecutiveHits = 0;
         health = INITIAL_HEALTH;
