@@ -1,46 +1,36 @@
 package Irrgarten;
 
-
+import Irrgarten.CombatElement;
 import Irrgarten.Dice;
 
 /**
  *
  * @author aaron
  */
-public class Shield {
-   private final float protection;
-   private int uses;
-   
+public class Shield extends CombatElement{
    public Shield(float _protection, int _uses){
-       protection = _protection;
-       uses = _uses;
+       super(_protection,_uses);
    }
 
+   @Override
     public int getUses(){
-        return uses;
+        return super.getUses();
     }
     
     public float getProtection(){
-        return protection;
+        return super.getEffect();
     }
    
     public float protect(){
-        float result = 0;
-        
-        if(uses > 0){
-            result = protection;
-            --uses;
-        }
-        
-        return result;
+        return super.produceEffect();
     }
     
     @Override 
     public String toString(){
-        return ("S[" + protection + ", " + uses + "]");
+        return ("S[" + getEffect() + ", " + getUses() + "]");
     }
     
     public boolean discard(){
-        return Dice.discardElement(uses);
+        return Dice.discardElement(getUses());
     }
 }
