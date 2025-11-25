@@ -23,10 +23,10 @@ public class Shield extends CombatElement{
     
     @Override 
     public String toString(){
-        return ("S[" + protection + ", " + uses + "]");
+        return ("S[" + getEffect() + ", " + getUses() + "]");
     }
     
     public boolean discard(){
-        return Dice.discardElement(uses);
+        return Dice.discardElement(getUses());
     }
 }
