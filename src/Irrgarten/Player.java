@@ -5,17 +5,13 @@ import java.util.ArrayList;
  *
  * @author aaron
  */
-public class Player {
+public class Player extends LabyrinthCharacter{
     private final static int MAX_WEAPONS = 2;
     private final static int MAX_SHIELDS = 3;
     private final static int INITIAL_HEALTH = 10;
     private final static int HITS2LOSE = 3;
-    
-    private final String name;
+
     private final char number;
-    private final float intelligence;
-    private final float strength;
-    private float health;
     private int row;
     private int col;
     private int consecutiveHits = 0;
@@ -23,60 +19,56 @@ public class Player {
     private ArrayList<Weapon> weapons = new ArrayList<>();
     private ArrayList<Shield> shields = new ArrayList<>();
     
-    public Player(char _number, float _intelligence, float _strengh){
+    public Player(char _number, float _intelligence, float _strength, float _health){
+        super(("Player# " + _number), _intelligence, _strength, INITIAL_HEALTH);
         number =  _number;
-        intelligence = _intelligence;
-        strength = _strengh;
-        health = INITIAL_HEALTH;
-        name = "Player# " + number; // establezco el nombre a Player# number
+        
         weapons.add(newWeapon()); // añado un arma al player
         shields.add(newShield()); // añado un shield al player
     }
     
-    public Player(Player other){
-        number =  other.number;
-        intelligence = other.intelligence;
-        strength = other.strength;
-        health = other.health;
-        name = other.name; 
-        weapons = other.weapons;
-        shields = other.shields;
+    public Player(Player other, char _number){
+        super(other);
+        number = _number;
     }
     
     public void resurrect(){
         consecutiveHits = 0;
-        health = INITIAL_HEALTH;
+        // health = INITIAL_HEALTH;
     }
     
+    @Override
     public int getRow(){
-        return row;
+        return super.getRow();
     }
     
+    @Override
     public int getCol(){
-        return col;
+        return super.getCol();
     }
     
     public char getNumber(){
         return number;
     }
     
+    @Override
     public void setPos(int _row, int _col){
-        row = _row;
-        col = _col;
+        super.setPos(_row, _col);
     }
     
+    @Override
     public boolean dead(){
-        return !(health > 0);
+        return super.dead();
     }
     
+    @Override
     public float attack(){
-        return (strength + sumWeapons());
+        return super.attack();
     }
 
     @Override
     public String toString(){
-        String result = "\n\nName: " + name + "\nposicion: (" + row +"," + col + 
-                ")\nIntelligence: " + intelligence;
+        String result = super.toString();
         
                 result += "\nWeapons: \n";
                 for(Weapon w : weapons)
@@ -157,10 +149,10 @@ public class Player {
     }
     
     private float defensiveEnergy(){
-        return (intelligence + sumShields());
+        return (/*intelligence*/ + sumShields());
     }
     
-    private boolean manageHit(float receivedAttack){
+    /*private boolean manageHit(float receivedAttack){
         float defense = defensiveEnergy();
         boolean lose = false;
         
@@ -176,13 +168,14 @@ public class Player {
         
         return lose;
     }
+    */
     
     private void resetHits(){
         consecutiveHits = 0;
     }
     
     private void gotWounded(){
-        --health;
+        // --health;
     }
     
     private void incConsecutiveHits(){
@@ -204,11 +197,12 @@ public class Player {
         }
         
         int extraHealth = Dice.healthReward();
-        health += extraHealth;
+        // health += extraHealth;
     }
     
+    @Override
     public boolean defend(float receivedAttack){
-        return manageHit(receivedAttack);
+        return super.defend(receivedAttack);
     }
     
     public Directions move(Directions direction,ArrayList<Directions> validMoves){
