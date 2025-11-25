@@ -1,7 +1,7 @@
 package Irrgarten.controller;
 
-import Irrgarten.irrgarten.Game;
-import Irrgarten.irrgarten.Directions;
+import Irrgarten.Game;
+import Irrgarten.Directions;
 import Irrgarten.UI.TextUI;
 
 
@@ -19,7 +19,7 @@ public class Controller {
         boolean endOfGame = false;
         while (!endOfGame) {
             view.showGame(game.getGameState()); 
-            Directions direction = view.nextMove(); 
+            Directions direction = (Directions) view.nextMove(); 
             endOfGame = game.nextStep(direction);
         }
       view.showGame(game.getGameState());        
