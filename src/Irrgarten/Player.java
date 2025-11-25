@@ -12,8 +12,6 @@ public class Player extends LabyrinthCharacter{
     private final static int HITS2LOSE = 3;
 
     private final char number;
-    private int row;
-    private int col;
     private int consecutiveHits = 0;
     
     private ArrayList<Weapon> weapons = new ArrayList<>();
@@ -27,14 +25,19 @@ public class Player extends LabyrinthCharacter{
         shields.add(newShield()); // añado un shield al player
     }
     
-    public Player(Player other, char _number){
+    public Player(Player other){
         super(other);
-        number = _number;
+        number = other.number;
+        consecutiveHits = other.consecutiveHits;
+        for (Weapon w : other.weapons)
+            weapons.add(new Weapon(w.getPower(), w.getUses()));
+        for (Shield s : other.shields)
+            shields.add(new Shield(s.getProtection(), s.getUses()));
     }
     
     public void resurrect(){
+        super.setHealth(INITIAL_HEALTH);
         consecutiveHits = 0;
-        // health = INITIAL_HEALTH;
     }
     
     public char getNumber(){
@@ -108,7 +111,7 @@ public class Player extends LabyrinthCharacter{
         return s;
     }
     
-    private float sumWeapons(){
+    protected float sumWeapons(){
         float sum = 0;
         int size = weapons.size();
         
@@ -118,7 +121,7 @@ public class Player extends LabyrinthCharacter{
         return sum;
     }
     
-    private float sumShields(){
+    protected float sumShields(){
         float sum = 0;
         int size = shields.size();
         
@@ -128,8 +131,8 @@ public class Player extends LabyrinthCharacter{
         return sum;
     }
     
-    private float defensiveEnergy(){
-        return (/*intelligence*/ + sumShields());
+    protected float defensiveEnergy(){
+        return (super.getIntelligence() + sumShields());
     }
     
     private boolean manageHit(float receivedAttack){
@@ -153,10 +156,6 @@ public class Player extends LabyrinthCharacter{
         consecutiveHits = 0;
     }
     
-    private void gotWounded(){
-        // --health;
-    }
-    
     private void incConsecutiveHits(){
         ++consecutiveHits;
     }
@@ -176,7 +175,7 @@ public class Player extends LabyrinthCharacter{
         }
         
         int extraHealth = Dice.healthReward();
-        // health += extraHealth;
+        super.setHealth(super.getHealth()+extraHealth);
     }
     
     public boolean defend(float receivedAttack){
