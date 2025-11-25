@@ -9,9 +9,10 @@ import java.util.ArrayList;
 public class FuzzyPlayer extends Player{
     
     public FuzzyPlayer(Player other){
-        super.Player(other);
+        super(other);
     }
     
+    @Override
     public Directions move(Directions direction, ArrayList<Directions> validMoves){
         return direction;
     }
