@@ -1,8 +1,5 @@
 package Irrgarten;
 
-import Irrgarten.CombatElement;
-import Irrgarten.Dice;
-
 /**
  *
  * @author aaron
