@@ -4,7 +4,7 @@ package Irrgarten.Main;
  *
  * @author aaron
  */
-import Irrgarten.irrgarten.Game;
+import Irrgarten.Game;
 import Irrgarten.controller.Controller;
 import Irrgarten.UI.TextUI;
 
