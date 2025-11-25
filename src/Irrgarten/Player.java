@@ -37,28 +37,8 @@ public class Player extends LabyrinthCharacter{
         // health = INITIAL_HEALTH;
     }
     
-    @Override
-    public int getRow(){
-        return super.getRow();
-    }
-    
-    @Override
-    public int getCol(){
-        return super.getCol();
-    }
-    
     public char getNumber(){
         return number;
-    }
-    
-    @Override
-    public void setPos(int _row, int _col){
-        super.setPos(_row, _col);
-    }
-    
-    @Override
-    public boolean dead(){
-        return super.dead();
     }
     
     @Override
@@ -152,7 +132,7 @@ public class Player extends LabyrinthCharacter{
         return (/*intelligence*/ + sumShields());
     }
     
-    /*private boolean manageHit(float receivedAttack){
+    private boolean manageHit(float receivedAttack){
         float defense = defensiveEnergy();
         boolean lose = false;
         
@@ -168,7 +148,6 @@ public class Player extends LabyrinthCharacter{
         
         return lose;
     }
-    */
     
     private void resetHits(){
         consecutiveHits = 0;
@@ -200,9 +179,8 @@ public class Player extends LabyrinthCharacter{
         // health += extraHealth;
     }
     
-    @Override
     public boolean defend(float receivedAttack){
-        return super.defend(receivedAttack);
+        return manageHit(receivedAttack);
     }
     
     public Directions move(Directions direction,ArrayList<Directions> validMoves){
