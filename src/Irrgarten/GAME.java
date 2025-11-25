@@ -1,5 +1,10 @@
 package Irrgarten.irrgarten;
-
+import Irrgarten.irrgarten.GameCharacter;
+import Irrgarten.irrgarten.GameState;
+import Irrgarten.irrgarten.Labyrinth;
+import Irrgarten.irrgarten.Monster;
+import Irrgarten.irrgarten.Orientation;
+import Irrgarten.irrgarten.Player;
 import java.util.ArrayList;
 import static java.util.Arrays.asList;
 
