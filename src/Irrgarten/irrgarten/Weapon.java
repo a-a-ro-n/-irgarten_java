@@ -16,22 +16,15 @@ public class Weapon extends CombatElement{
     }
     
     public float getPower(){
-        return power;
+        return super.getEffect();
     }
     
     public int getUses(){
-        return uses;
+        return super.getUses();
     }
 
     public float attack(){
-        float damage = 0;
-        
-        if(uses > 0){
-            damage = power;
-            --uses;
-        }
-        
-        return damage;
+        return super.produceEffect();
     }
     
     @Override public String toString(){
