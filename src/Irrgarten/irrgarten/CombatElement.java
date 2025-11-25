@@ -22,4 +22,23 @@ public abstract class CombatElement {
         
         return (effect + ", " + uses);
     }
+    
+    public float getEffect(){
+        return effect;
+    }
+    
+    public int getUses(){
+        return uses;
+    }
+    
+    public float produceEffect(){
+        float result = 0;
+        
+        if(uses > 0){
+            result = effect;
+            --uses;
+        }
+        
+        return result;
+    }
 }
