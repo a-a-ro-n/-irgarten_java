@@ -1,5 +1,6 @@
 package Irrgarten;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -73,4 +74,11 @@ public class Dice {
         // al hacer (usesLeft / MAX_USES) se obtiene un valos entre 1-0 
         // entonces 1 - (usesLeft / MAX_USES) es lo inverso al (usesLeft / MAX_USES)
     }
+    
+    public static Directions nextStep(Directions preference,ArrayList<Directions> validMoves,float intelligence){
+        Directions result = (generator.nextFloat((float) MAX_INTELLIGENCE) < intelligence)? preference : validMoves.get(Dice.randomPos(validMoves.size()));
+        
+        return result;
+    }
+
 }
