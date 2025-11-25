@@ -4,32 +4,21 @@ package Irrgarten.irrgarten;
  *
  * @author aaron
  */
-public class Shield {
-   private final float protection;
-   private int uses;
-   
+public class Shield extends CombatElement{
    public Shield(float _protection, int _uses){
-       protection = _protection;
-       uses = _uses;
+       super(_protection,_uses);
    }
 
     public int getUses(){
-        return uses;
+        return super.getUses();
     }
     
     public float getProtection(){
-        return protection;
+        return super.getEffect();
     }
    
     public float protect(){
-        float result = 0;
-        
-        if(uses > 0){
-            result = protection;
-            --uses;
-        }
-        
-        return result;
+        return super.produceEffect();
     }
     
     @Override 
