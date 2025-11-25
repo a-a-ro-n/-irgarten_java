@@ -1,6 +1,5 @@
 package Irrgarten;
 import java.util.ArrayList;
-import static java.util.Arrays.asList;
 
 /**
  *
@@ -28,7 +27,7 @@ public class Game {
    
     public Game(int nplayers){
         for(int i = 0; i < nplayers; i++){
-            Player player = new Player((char)('0' + i),Dice.randomIntelligence(),Dice.randomStrength()); 
+            Player player = new Player((char)('0' + i),Dice.randomIntelligence(),Dice.randomStrength(), 10); 
             players.add(player);
         }
                     
@@ -52,7 +51,7 @@ public class Game {
     
     private void configureLabyrinth(){
         for(int i = 0; i < 3; i++){
-            Monster monster = new Monster("Monster# " + i, Dice.randomIntelligence(), Dice.randomStrength()); 
+            Monster monster = new Monster("Monster# " + i, Dice.randomIntelligence(), Dice.randomStrength(), 5); 
             int[] pos = lab.randomEmptyPos();
             
             lab.addMonster(pos[0], pos[1], monster);
@@ -85,7 +84,11 @@ public class Game {
     private void manageResurrection(){
         boolean resurrect = Dice.resurrectPlayer();
         if(resurrect){
-            players.get(currentPlayerIndex).resurrect();
+            Player p = players.get(currentPlayerIndex);
+            FuzzyPlayer newPlayer = new FuzzyPlayer(p);
+            players.set(currentPlayerIndex,newPlayer);
+            newPlayer.resurrect();
+            
             logResurrected();
         }
         else
@@ -127,7 +130,7 @@ public class Game {
         int currentCol = currentPlayer.getCol();
         
         Directions[] valid = validMoves(currentRow, currentCol);
-        ArrayList<Directions> direcion = new ArrayList<>(asList(valid));
+        ArrayList<Directions> direcion = new ArrayList<>();
         
         return currentPlayer.move(preferredDirection,direcion);  
     }
