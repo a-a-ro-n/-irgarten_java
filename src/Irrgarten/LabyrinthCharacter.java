@@ -23,6 +23,8 @@ public class LabyrinthCharacter{
         name = other.name;
         intelligence = other.intelligence;
         strength = other.strength;
+        row = other.row;
+        col = other.col;
     }
     
     public boolean dead(){
@@ -37,19 +39,19 @@ public class LabyrinthCharacter{
         return col;
     }
     
-    abstract float getIntelligence(){
+    protected float getIntelligence(){
         return intelligence;
     }
     
-    abstract float getStrength(){
+    protected float getStrength(){
         return strength;
     }
     
-    abstract float getHelath(){
+    protected float getHealth(){
         return health;
     }
     
-    abstract void setHealth(float _health){
+    protected void setHealth(float _health){
         health = _health;
     }
     
@@ -64,7 +66,7 @@ public class LabyrinthCharacter{
                 "\nStrength: " + strength + "\nHealth: " + health + "\n";
     }
     
-    abstract void gotWounded(){
+    protected void gotWounded(){
         health--;
     }
     
