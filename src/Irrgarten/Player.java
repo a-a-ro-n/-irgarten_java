@@ -13,22 +13,31 @@ public class Player extends LabyrinthCharacter{
 
     private final char number;
     private int consecutiveHits = 0;
+    WeaponCardDeck weaponDeck;
+    ShieldCardDeck shieldDeck;
     
     private ArrayList<Weapon> weapons = new ArrayList<>();
     private ArrayList<Shield> shields = new ArrayList<>();
     
-    public Player(char _number, float _intelligence, float _strength, float _health){
+    public Player(char _number, float _intelligence, float _strength, float _health,WeaponCardDeck wDeck, ShieldCardDeck sDeck){
         super(("Player# " + _number), _intelligence, _strength, INITIAL_HEALTH);
         number =  _number;
         
-        weapons.add(newWeapon()); // añado un arma al player
-        shields.add(newShield()); // añado un shield al player
+        weaponDeck = wDeck;
+        shieldDeck = sDeck;
+        
+        weapons.add(weaponDeck.nextCard()); // añado un arma al player
+        shields.add(shieldDeck.nextCard()); // añado un shield al player
     }
     
     public Player(Player other){
         super(other);
         number = other.number;
         consecutiveHits = other.consecutiveHits;
+        
+        weaponDeck = other.weaponDeck;
+        shieldDeck = other.shieldDeck;
+        
         for (Weapon w : other.weapons)
             weapons.add(new Weapon(w.getPower(), w.getUses()));
         for (Shield s : other.shields)
@@ -101,6 +110,7 @@ public class Player extends LabyrinthCharacter{
             shields.add(s);
     }
     
+    /*  sustituidos por nextCard(
     private Weapon newWeapon(){
         Weapon w = new Weapon(Dice.weaponPower(),Dice.usesLeft());
         return w;
@@ -110,8 +120,9 @@ public class Player extends LabyrinthCharacter{
         Shield s = new Shield(Dice.shieldPower(),Dice.usesLeft());
         return s;
     }
+    */
     
-    protected float sumWeapons(){
+    protected float sumWeapons(){ // Fuzzy
         float sum = 0;
         int size = weapons.size();
         
@@ -121,7 +132,7 @@ public class Player extends LabyrinthCharacter{
         return sum;
     }
     
-    protected float sumShields(){
+    protected float sumShields(){ // Fuzzy
         float sum = 0;
         int size = shields.size();
         
@@ -131,7 +142,7 @@ public class Player extends LabyrinthCharacter{
         return sum;
     }
     
-    protected float defensiveEnergy(){
+    protected float defensiveEnergy(){ // Fuzzy
         return (super.getIntelligence() + sumShields());
     }
     
@@ -165,12 +176,12 @@ public class Player extends LabyrinthCharacter{
         int sReward = Dice.shieldReward();
         
         for(int i = 0; i < wReward; i++){
-            Weapon wnew = newWeapon();
+            Weapon wnew = weaponDeck.nextCard();
             receiveWeapon(wnew);
         }
         
         for(int i = 0; i < sReward; i++){
-            Shield snew = newShield();
+            Shield snew = shieldDeck.nextCard();
             receiveShield(snew);
         }
         
