@@ -66,7 +66,7 @@ public abstract class LabyrinthCharacter{
                 "\nStrength: " + strength + "\nHealth: " + health + "\n";
     }
     
-    protected abstract void gotWounded();
+    protected abstract void gotWounded(); // futura implementacion en las clases monster y player
     
     public float attack(){
        return Dice.intensity(strength);
