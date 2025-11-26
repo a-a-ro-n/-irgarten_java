@@ -4,7 +4,7 @@ package Irrgarten;
  *
  * @author aaron
  */
-public class LabyrinthCharacter{
+public abstract class LabyrinthCharacter{
     private final String name;
     private final float intelligence;
     private final float strength;
@@ -66,9 +66,7 @@ public class LabyrinthCharacter{
                 "\nStrength: " + strength + "\nHealth: " + health + "\n";
     }
     
-    protected void gotWounded(){
-        health--;
-    }
+    protected abstract void gotWounded();
     
     public float attack(){
        return Dice.intensity(strength);
