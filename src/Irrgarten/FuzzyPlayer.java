@@ -22,6 +22,7 @@ public class FuzzyPlayer extends Player{
         return (super.sumWeapons() + Dice.intensity(super.getStrength()));
     }
     
+    @Override
     protected float defensiveEnergy(){
         return (super.sumShields() + Dice.intensity(super.getIntelligence()));
     }
