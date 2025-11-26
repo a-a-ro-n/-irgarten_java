@@ -27,7 +27,7 @@ public class Player extends LabyrinthCharacter{
         shieldDeck = sDeck;
         
         weapons.add(weaponDeck.nextCard()); // añado un arma al player
-        shields.add(shieldDeck.nextCard()); // añado un shield al player
+        shields.add(shieldDeck.nextCard());// añado un shield al player
     }
     
     public Player(Player other){
@@ -144,6 +144,11 @@ public class Player extends LabyrinthCharacter{
     
     protected float defensiveEnergy(){ // Fuzzy
         return (super.getIntelligence() + sumShields());
+    }
+
+    @Override
+    protected void gotWounded(){
+        super.setHealth(super.getHealth()-1);
     }
     
     private boolean manageHit(float receivedAttack){
