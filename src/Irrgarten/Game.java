@@ -17,6 +17,9 @@ public class Game {
     private ArrayList<Monster> monsters = new ArrayList<>();
     Labyrinth lab;
     
+    private WeaponCardDeck weaponDeck;
+    private ShieldCardDeck shieldDeck;
+    
     public int getPlayers(){
         return players.size();
     }
@@ -26,8 +29,11 @@ public class Game {
     }
    
     public Game(int nplayers){
+        weaponDeck = new WeaponCardDeck();
+        shieldDeck = new ShieldCardDeck();
+        
         for(int i = 0; i < nplayers; i++){
-            Player player = new Player((char)('0' + i),Dice.randomIntelligence(),Dice.randomStrength(), 10); 
+            Player player = new Player((char)('0' + i),Dice.randomIntelligence(),Dice.randomStrength(), 10, weaponDeck, shieldDeck); 
             players.add(player);
         }
                     
@@ -86,7 +92,8 @@ public class Game {
         if(resurrect){
             Player p = players.get(currentPlayerIndex);
             FuzzyPlayer newPlayer = new FuzzyPlayer(p);
-            players.set(currentPlayerIndex,newPlayer);
+            
+            players.set(currentPlayerIndex,newPlayer); // agregamos al Fuzzy player 
             newPlayer.resurrect();
             
             logResurrected();
