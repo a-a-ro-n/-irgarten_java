@@ -32,11 +32,14 @@ public class Game {
         weaponDeck = new WeaponCardDeck();
         shieldDeck = new ShieldCardDeck();
         
-        for(int i = 0; i < nplayers; i++){
+        /*for(int i = 0; i < nplayers - 1; i++){ // hay que cambiarlo
             Player player = new Player((char)('0' + i),Dice.randomIntelligence(),Dice.randomStrength(), 10, weaponDeck, shieldDeck); 
             players.add(player);
         }
-                    
+        */
+        Player player = new Player('F', Dice.randomIntelligence(), Dice.randomStrength(), 0, weaponDeck, shieldDeck); // creacion de un player para que sea el Fuzzy player
+        players.add(player);
+        
         int exitRow = Dice.randomPos(N_ROWS);
         int exitCol = Dice.randomPos(N_COLS);
         lab = new Labyrinth(N_ROWS,N_COLS,exitRow,exitCol);
