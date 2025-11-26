@@ -31,6 +31,7 @@ public class Monster extends LabyrinthCharacter{
         return super.toString();
     }
     
+    @Override
     public void gotWounded(){
         super.setHealth(super.getHealth() - 1);
     }
