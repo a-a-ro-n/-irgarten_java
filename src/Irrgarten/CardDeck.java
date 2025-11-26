@@ -1,11 +1,16 @@
 package Irrgarten;
 import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author aaron
  */
-public abstract class CardDeck<T extends CombatElement> {
+public abstract class CardDeck<T extends CombatElement>{
     private ArrayList<T> cardDeck = new ArrayList<>();
+    
+    public CardDeck(){}
     
     protected abstract T createCard();
     protected abstract void addCards();
@@ -15,10 +20,12 @@ public abstract class CardDeck<T extends CombatElement> {
     }
     
     public T nextCard(){
-        if(cardDeck.isEmpty())
-            addCards(); // Llenar la baraja
+        if(cardDeck.isEmpty()){
+            addCards();
+            Collections.shuffle(cardDeck); // Barajar
+        }
         
-        T card = cardDeck.remove(0); // Seleccionar y eliminar la primera carta
+        T card = cardDeck.remove(0);
         return card;
     }
 }
