@@ -61,7 +61,7 @@ public class Game {
             int[] pos = lab.randomEmptyPos();
             
             lab.addMonster(pos[0], pos[1], monster);
-            
+
             monster.setPos(pos[0], pos[1]);
             monsters.add(monster);
         }
