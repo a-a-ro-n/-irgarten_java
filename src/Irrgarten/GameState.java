@@ -5,12 +5,12 @@ package Irrgarten;
  * @author aaron
  */
 public class GameState {
-    private String labyrinth;
-    private String players;
-    private String monstres;
-    private int currentPlayer;
-    private boolean winner;
-    private String log;
+    private final String labyrinth;
+    private final String players;
+    private final String monstres;
+    private final int currentPlayer;
+    private final boolean winner;
+    private final String log;
     
     public GameState(String _labyrinth, String _players, String _monstres, int _currentPlayer, boolean _winner, String _log){
         labyrinth = _labyrinth;
