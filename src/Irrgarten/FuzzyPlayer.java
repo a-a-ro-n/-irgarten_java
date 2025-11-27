@@ -29,6 +29,6 @@ public class FuzzyPlayer extends Player{
     
     @Override
     public String toString(){
-        return ("Fuzzy " + super.toString());
+        return ("\nFuzzy " + super.toString());
     }
 } 
