@@ -68,7 +68,7 @@ public abstract class LabyrinthCharacter{
     
     protected abstract void gotWounded(); // futura implementacion en las clases monster y player
     
-    public abstract float attack();
+    public abstract float attack(); // futura implementacion en las clases monster y player
     
-    public abstract boolean defend(float attack);
+    public abstract boolean defend(float attack); // futura implementacion en las clases monster y player
 }
