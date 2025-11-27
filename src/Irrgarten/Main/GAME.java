@@ -14,7 +14,7 @@ public class GAME {
         
         System.out.println("\n--- JUEGO IRRGARTEN ---\n");
 
-        int nPlayers = 2; 
+        int nPlayers = 3; 
 
         Game game = new Game(nPlayers);
 
