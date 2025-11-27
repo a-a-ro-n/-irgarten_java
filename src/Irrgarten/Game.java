@@ -32,11 +32,11 @@ public class Game {
         weaponDeck = new WeaponCardDeck();
         shieldDeck = new ShieldCardDeck();
         
-        /*for(int i = 0; i < nplayers - 1; i++){ // hay que cambiarlo
+        for(int i = 0; i < nplayers - 1; i++){ // hay que cambiarlo
             Player player = new Player((char)('0' + i),Dice.randomIntelligence(),Dice.randomStrength(), 10, weaponDeck, shieldDeck); 
             players.add(player);
         }
-        */
+        
         Player player = new Player('F', Dice.randomIntelligence(), Dice.randomStrength(), 0, weaponDeck, shieldDeck); // creacion de un player para que sea el Fuzzy player
         players.add(player);
         
@@ -139,13 +139,12 @@ public class Game {
         int currentRow = currentPlayer.getRow();
         int currentCol = currentPlayer.getCol();
         
-        Directions[] valid = validMoves(currentRow, currentCol);
-        ArrayList<Directions> direcion = new ArrayList<>();
+        ArrayList<Directions> direcion = validMoves(currentRow, currentCol);
         
         return currentPlayer.move(preferredDirection,direcion);  
     }
     
-    private Directions[] validMoves(int row, int col){
+    private ArrayList<Directions> validMoves(int row, int col){
         return lab.validMoves(row, col);
     }
     
