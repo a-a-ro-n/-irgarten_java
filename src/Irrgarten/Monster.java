@@ -18,7 +18,7 @@ public class Monster extends LabyrinthCharacter{
     
     @Override
     public float attack(){
-        return super.attack();
+       return Dice.intensity(getStrength());
     }
     
     @Override
@@ -39,6 +39,16 @@ public class Monster extends LabyrinthCharacter{
     
     @Override
     public boolean defend(float receivedAttack){ // tiene que ser publico para poder usarlo en otras clases
-        return super.defend(receivedAttack);
+        boolean isDead = dead();
+        if(!isDead){
+            float defensiveEnergy = Dice.intensity(getIntelligence());
+            
+            if(defensiveEnergy < receivedAttack){
+                gotWounded();
+                isDead = dead();
+            }
+        }
+        
+        return isDead; 
     }
 }
