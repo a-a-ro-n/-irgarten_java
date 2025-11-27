@@ -30,15 +30,20 @@ public class Game {
    
     public Game(int nplayers){
         weaponDeck = new WeaponCardDeck();
-        shieldDeck = new ShieldCardDeck();
+        weaponDeck.addCards(); // agrego cartas nuevas al conjunto
         
-        for(int i = 0; i < nplayers - 1; i++){ // hay que cambiarlo
+        shieldDeck = new ShieldCardDeck();
+        shieldDeck.addCards(); // agrego cartas nuevas al conjunto
+        
+        for(int i = 0; i < nplayers; i++){
             Player player = new Player((char)('0' + i),Dice.randomIntelligence(),Dice.randomStrength(), 10, weaponDeck, shieldDeck); 
             players.add(player);
         }
         
+        /*
         Player player = new Player('F', Dice.randomIntelligence(), Dice.randomStrength(), 0, weaponDeck, shieldDeck); // creacion de un player para que sea el Fuzzy player
         players.add(player);
+        */
         
         int exitRow = Dice.randomPos(N_ROWS);
         int exitCol = Dice.randomPos(N_COLS);
