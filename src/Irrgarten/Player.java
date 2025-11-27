@@ -55,7 +55,7 @@ public class Player extends LabyrinthCharacter{
     
     @Override
     public float attack(){
-        return super.attack();
+       return Dice.intensity(getStrength());
     }
 
     @Override
@@ -194,6 +194,7 @@ public class Player extends LabyrinthCharacter{
         super.setHealth(super.getHealth()+extraHealth);
     }
     
+    @Override
     public boolean defend(float receivedAttack){
         return manageHit(receivedAttack);
     }
