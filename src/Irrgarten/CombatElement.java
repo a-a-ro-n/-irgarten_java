@@ -5,7 +5,7 @@ package Irrgarten;
  * @author aaron
  */
 public abstract class CombatElement {
-    private float effect;
+    private final float effect;
     private int uses;
     
     public CombatElement(float _effect, int _uses){
