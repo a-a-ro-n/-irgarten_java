@@ -127,7 +127,7 @@ public class Labyrinth {
         }
     }
 
-    public Directions[] validMoves(int row, int col) {
+    public ArrayList<Directions> validMoves(int row, int col) {
     
         ArrayList<Directions> direccionesValidas = new ArrayList<>();
 
@@ -140,7 +140,7 @@ public class Labyrinth {
         if(canStepOn(row,col - 1))
             direccionesValidas.add(Directions.LEFT);
 
-        return direccionesValidas.toArray(new Directions[direccionesValidas.size()]);
+        return direccionesValidas;
     }
 
     private boolean posOK(int row, int col) { 
