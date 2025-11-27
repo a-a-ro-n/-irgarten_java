@@ -20,7 +20,7 @@ public class Player extends LabyrinthCharacter{
     private ArrayList<Shield> shields = new ArrayList<>();
     
     public Player(char _number, float _intelligence, float _strength, float _health,WeaponCardDeck wDeck, ShieldCardDeck sDeck){
-        super(("Player# " + _number), _intelligence, _strength, _health); // hay que poner INITIAL_HEALTH
+        super(("Player# " + _number), _intelligence, _strength, INITIAL_HEALTH);
         number =  _number;
         
         weaponDeck = wDeck;
@@ -110,7 +110,8 @@ public class Player extends LabyrinthCharacter{
             shields.add(s);
     }
     
-    /*  sustituidos por nextCard(
+    /*  sustituidos por nextCard()
+    
     private Weapon newWeapon(){
         Weapon w = new Weapon(Dice.weaponPower(),Dice.usesLeft());
         return w;
