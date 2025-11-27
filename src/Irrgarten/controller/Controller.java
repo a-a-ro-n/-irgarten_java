@@ -7,8 +7,8 @@ import Irrgarten.UI.TextUI;
 
 public class Controller {
     
-    private Game game;
-    private TextUI view;
+    private final Game game;
+    private final TextUI view;
     
     public Controller(Game game, TextUI view) {
         this.game = game;
