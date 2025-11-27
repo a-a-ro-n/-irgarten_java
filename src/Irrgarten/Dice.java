@@ -76,7 +76,11 @@ public class Dice {
     }
     
     public static Directions nextStep(Directions preference,ArrayList<Directions> validMoves,float intelligence){
-        Directions result = (generator.nextFloat((float) MAX_INTELLIGENCE) < intelligence)? preference : validMoves.get(Dice.randomPos(validMoves.size()));
+        Directions result;
+        if(validMoves.isEmpty())
+            result = preference;
+        else
+            result = (generator.nextFloat((float) MAX_INTELLIGENCE) < intelligence)? preference : validMoves.get(Dice.randomPos(validMoves.size()));
         
         return result;
     }
