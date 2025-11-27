@@ -6,6 +6,7 @@ import java.util.Collections;
 /**
  *
  * @author aaron
+ * @param <T>
  */
 public abstract class CardDeck<T extends CombatElement>{
     private ArrayList<T> cardDeck = new ArrayList<>();
