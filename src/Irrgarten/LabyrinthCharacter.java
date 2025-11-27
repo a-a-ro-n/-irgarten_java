@@ -68,21 +68,7 @@ public abstract class LabyrinthCharacter{
     
     protected abstract void gotWounded(); // futura implementacion en las clases monster y player
     
-    public float attack(){
-       return Dice.intensity(strength);
-    }
+    public abstract float attack();
     
-    public boolean defend(float attack){
-                boolean isDead = dead();
-        if(!isDead){
-            float defensiveEnergy = Dice.intensity(intelligence);
-            
-            if(defensiveEnergy < attack){
-                gotWounded();
-                isDead = dead();
-            }
-        }
-        
-        return isDead; 
-    }
+    public abstract boolean defend(float attack);
 }
