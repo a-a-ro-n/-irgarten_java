@@ -1,13 +1,15 @@
 package Irrgarten.UI;
 
+import Irrgarten.Directions;
 /**
  *
  * @author aaron
  */
-public class JDialog extends javax.swing.JDialog {
+public class JDialog extends javax.swing.JDialog{
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JDialog.class.getName());
-
+    private Directions direction;
+    
     /**
      * Creates new form JDialog
      */
@@ -17,6 +19,11 @@ public class JDialog extends javax.swing.JDialog {
         setVisible(true);
     }
 
+    public Directions getDirection() { // 
+        setVisible(true); // Hace visible el diálogo y espera la entrada del usuario [cite: 37, 38]
+        return direction; // Devuelve la dirección cuando se llama a dispose()
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,22 +33,98 @@ public class JDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LEFT = new java.awt.Button();
+        DOWN = new java.awt.Button();
+        UP = new java.awt.Button();
+        RIGHT = new java.awt.Button();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        LEFT.setBackground(new java.awt.Color(51, 102, 255));
+        LEFT.setLabel("LEFT");
+        LEFT.addActionListener(this::LEFTActionPerformed);
+
+        DOWN.setBackground(new java.awt.Color(102, 102, 102));
+        DOWN.setLabel("DOWN");
+        DOWN.addActionListener(this::DOWNActionPerformed);
+
+        UP.setBackground(new java.awt.Color(102, 255, 102));
+        UP.setLabel("UP");
+        UP.addActionListener(this::UPActionPerformed);
+        UP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                UPKeyTyped(evt);
+            }
+        });
+
+        RIGHT.setBackground(new java.awt.Color(255, 0, 0));
+        RIGHT.setLabel("RIGHT");
+        RIGHT.addActionListener(this::RIGHTActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LEFT, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 131, Short.MAX_VALUE)
+                        .addComponent(RIGHT, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UP, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DOWN, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(UP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LEFT, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RIGHT, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(DOWN, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void UPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UPKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UPKeyTyped
+
+    private void UPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UPActionPerformed
+        direction = Directions.UP; // Almacena la dirección [cite: 39, 47]
+        dispose();
+    }//GEN-LAST:event_UPActionPerformed
+
+    private void DOWNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOWNActionPerformed
+        direction = Directions.DOWN; // Almacena la dirección
+        dispose();
+    }//GEN-LAST:event_DOWNActionPerformed
+
+    private void RIGHTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RIGHTActionPerformed
+        direction = Directions.RIGHT; // Almacena la dirección
+        dispose();
+    }//GEN-LAST:event_RIGHTActionPerformed
+
+    private void LEFTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LEFTActionPerformed
+        direction = Directions.LEFT; // Almacena la dirección
+        dispose();
+    }//GEN-LAST:event_LEFTActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button DOWN;
+    private java.awt.Button LEFT;
+    private java.awt.Button RIGHT;
+    private java.awt.Button UP;
     // End of variables declaration//GEN-END:variables
 }
