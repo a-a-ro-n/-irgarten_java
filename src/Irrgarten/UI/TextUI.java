@@ -5,7 +5,7 @@ import Irrgarten.GameState;
 import java.util.Scanner;
 
 
-public class TextUI {
+public class TextUI implements UI {
     
     private static Scanner in = new Scanner(System.in);
     
