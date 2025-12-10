@@ -6,7 +6,8 @@ package Irrgarten.Main;
  */
 import Irrgarten.Game;
 import Irrgarten.controller.Controller;
-import Irrgarten.UI.TextUI;
+import Irrgarten.UI.UI;
+import Irrgarten.UI.JFrame;
 
 public class GAME {
     
@@ -18,7 +19,7 @@ public class GAME {
 
         Game game = new Game(nPlayers);
 
-        TextUI view = new TextUI();
+        UI view = new JFrame();
 
         Controller controller = new Controller(game, view);
         controller.play();
