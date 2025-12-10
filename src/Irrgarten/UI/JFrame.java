@@ -39,7 +39,7 @@ public class JFrame extends javax.swing.JFrame implements UI{
         jScrollPane3 = new javax.swing.JScrollPane();
         logTextArea = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        labyrinthAreaText = new javax.swing.JTextArea();
         jScrollPane10 = new javax.swing.JScrollPane();
         playersTextArea = new javax.swing.JTextArea();
         panel2 = new java.awt.Panel();
@@ -65,9 +65,9 @@ public class JFrame extends javax.swing.JFrame implements UI{
         logTextArea.setRows(5);
         jScrollPane3.setViewportView(logTextArea);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        labyrinthAreaText.setColumns(20);
+        labyrinthAreaText.setRows(5);
+        jScrollPane4.setViewportView(labyrinthAreaText);
 
         playersTextArea.setColumns(20);
         playersTextArea.setRows(5);
@@ -145,12 +145,12 @@ public class JFrame extends javax.swing.JFrame implements UI{
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextPane jTextPane1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label5;
+    private javax.swing.JTextArea labyrinthAreaText;
     private javax.swing.JTextArea logTextArea;
     private javax.swing.JTextArea monstersTextArea;
     private java.awt.Panel panel2;
@@ -159,7 +159,7 @@ public class JFrame extends javax.swing.JFrame implements UI{
 
     @Override
     public void showGame(GameState gameState) {
-        playersTextArea.setText(gameState.getLabyrinth());
+        labyrinthAreaText.setText(gameState.getLabyrinth());
         playersTextArea.setText(gameState.getPlayers());
         monstersTextArea.setText(gameState.getMonstres());
         label1.setText(String.valueOf(gameState.getCurrentPlayer())); // current player label
